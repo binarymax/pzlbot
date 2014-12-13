@@ -7,67 +7,44 @@ html
 	body.back.pastel-blue
 		#content
 			header#head
-				h1 Arithmetic
+				h1 Jumble
+				h2= puzzle.date
 			section.text
 				article
 					p
-						| These puzzles challenge your addition, subtraction, multiplication, and division crunching power.  Remember the commutative laws, and try to solve them in your head.  Check your answer in the box to earn points!
+						| These puzzles challenge your anagram solving power.  Find the word that matches the jumbled letters.  Check your answer in the box to earn points!
 			section.section
 				article.card.back.pastel-egg
 					header
-						h3.card-header Additive Easy
+						h3.card-header Easy
 					div
 						p.card-text.card-space
-							| 3 + 12 + 72 + 2 + 4 + 9 + 21 + 6
+							| #{puzzle.easyproblem}
 						.card-input
-							input.card-number.medium
-							button.card-button Check
+							input(type="hidden",id="easyid",value=puzzle.easyid)
+							input.card-number.medium(type="text",id="easytext")
+							button.card-button(type="text",data-target="easy") Check
 				article.card.back.pastel-egg
 					header
-						h3.card-header Additive Medium
+						h3.card-header Medium
 					div
 						p.card-text.card-space
-							| 52 + 41 + 78 + 95 + 62 + 108 + 90
+							| #{puzzle.mediumproblem}
 						.card-input
-							input.card-number.medium
-							button.card-button Check
+							input(type="hidden",id="mediumid",value=puzzle.mediumid)
+							input.card-number.medium(type="text",id="mediumtext")
+							button.card-button(type="text",data-target="medium") Check
 				article.card.back.pastel-egg
 					header
-						h3.card-header Additive Hard
+						h3.card-header Hard
 					div
 						p.card-text.card-space
-							| 152 + 141 + 278 + 695 + 362 + 808 + 690
+							| #{puzzle.hardproblem}
 						.card-input
-							input.card-number.medium
-							button.card-button Check
-			section.section
-				article.card.back.pastel-egg
-					header
-						h3.card-header Mutiplicative Easy
-					div
-						p.card-text.card-space
-							| 3 * 12 / 2 * 8 * 3 / 3
-						.card-input
-							input.card-number.medium
-							button.card-button Check
-				article.card.back.pastel-egg
-					header
-						h3.card-header Multiplicative Medium
-					div
-						p.card-text.card-space
-							| 743 * 6 * 3 / 2
-						.card-input
-							input.card-number.medium
-							button.card-button Check
-				article.card.back.pastel-egg
-					header
-						h3.card-header Multiplicative Hard
-					div
-						p.card-text.card-space
-							| 2398345 / 354
-						.card-input
-							input.card-number.medium
-							button.card-button Check
+							input(type="hidden",id="hardid",value=puzzle.hardid)
+							input.card-number.medium(type="text",id="hardtext")
+							button.card-button(type="text",data-target="hard") Check
+
 			footer
 				| &copy;Copyright 2014, PzlBot.com | Please do unto others as you would have them do unto you.
 				noscript
