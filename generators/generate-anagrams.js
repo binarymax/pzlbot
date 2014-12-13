@@ -29,6 +29,22 @@ var getset = function(j,k,l) {
 	return words;
 };
 
+//Quits the program when all async callbacks have been called
+var async = (function(){
+	var total = 0;
+	var done  = 0;
+	return function() {
+		++total;
+		console.log('Total:',total);
+		return function() {
+			++done;
+			console.log('Done:',done);
+			if(done===total) process.exit();
+		}
+	}
+})();
+
+//Generates the easy, medium, and hard puzzles for one year
 var generate = function() {
 
 	var date = moment();
@@ -55,16 +71,16 @@ var generate = function() {
 		var mp = p(p.type.jumble, p.difficulty.medium, d, m.letters, m.words[0]);
 		var hp = p(p.type.jumble, p.difficulty.hard, d, h.letters, h.words[0]);
 
-		date.add(1,'days');
+		ep.save(async());
+		mp.save(async());
+		hp.save(async());
 
-		console.log(JSON.stringify(ep.serialize()));
-		console.log(JSON.stringify(mp.serialize()));
-		console.log(JSON.stringify(hp.serialize()));
+		date.add(1,'days');
 
 	};
 
-	process.exit();
-
 };
 
-a.load(generate);
+console.log('Generation is complete!!!');
+process.exit();
+//a.load(generate);

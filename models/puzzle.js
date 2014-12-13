@@ -15,5 +15,5 @@ var GetPuzzle = Model.GetPuzzles = function(id,callback) {
 
 // ---------------------------------------------------------------------------------------------------
 var AddPuzzle = Model.AddPuzzle = function(type,difficulty,date,problem,solution,callback) {
-	query("INSERT INTO puzzles(type,difficulty,date,problem,solution) VALUES(?,?,?,?,?)",[type,difficulty,date,problem,solution],callback);
+	query("INSERT INTO puzzles(type,difficulty,puzzledate,problem,solution) VALUES(?,?,?,?,?)",[type,difficulty,date,problem,solution],callback);
 };
