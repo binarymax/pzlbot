@@ -5,10 +5,10 @@ html
 		link(rel='stylesheet', href='/stylesheets/joker.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 	body.back.pastel-white
+		header#head
+			h1 Puzzle Bot | Jumble
+			h2= puzzle.date
 		#content
-			header#head
-				h1 Puzzle Bot | Jumble
-				h2= puzzle.date
 			section.ad
 				.info Buy some stuff here!				
 			section.text
@@ -63,12 +63,12 @@ html
 							| Incorrect :(
 			section.ad
 				.info Buy some stuff here!
-			footer
-				| &copy;Copyright 2014, PzlBot.com | Please do unto others as you would have them do unto you.
-				noscript
-					h2 Hello Non-JavaScripter!
-					p
-						| A friendly note: Checking the solution to the puzzles shown above requires javascript.  Since you have javascript disabled, you will not be able to check your answers.
+		footer#foot
+			| &copy;Copyright 2014, PzlBot.com | Please do unto others as you would have them do unto you.
+			noscript
+				h2 Hello Non-JavaScripter!
+				p
+					| A friendly note: Checking the solution to the puzzles shown above requires javascript.  Since you have javascript disabled, you will not be able to check your answers.
 		script(type="text/javascript",src="/javascripts/jquery.min.js")
 		script(type="text/javascript",src="/javascripts/pzlbot.js")
 

@@ -1,9 +1,30 @@
-#content {
+body {
 	text-align: center;
+	margin:0;
+}
+
+#content {
+	background: url(/images/cream_pixels.png);
+}
+
+#head {
+	margin:0;
+	padding:10px;
+	width:100%;
+	background: #fff;
+	border-bottom:1px solid #eee;
+}
+
+#foot {
+	margin:0;
+	padding:10px;
+	width:100%;
+	background: #fff;
+	border-top:1px solid #eee;
 }
 
 
-a.plain { 
+.plain { 
 	text-decoration: none; color:#333;
 }
 
@@ -16,8 +37,8 @@ a.plain {
 }
 
 .ad {
-	margin-top:20px;
-	margin-bottom:20px;
+	padding-top:20px;
+	padding-bottom:20px;
 	margin-left:auto;
 	margin-right:auto;
 	width:320px;
@@ -78,6 +99,10 @@ a.plain {
 
 .card-incorrect {
 	color:#a33;
+}
+
+form {
+	white-space: nowrap;
 }
 
 input.card-number {

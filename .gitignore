@@ -29,3 +29,4 @@ node_modules
 secrets.js
 ./public/puzzles
 public/puzzles
+.DS_Store
