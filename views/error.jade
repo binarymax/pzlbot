@@ -1,6 +1,48 @@
-extends layout
+doctype html
+html
+	head
+		title Puzzle Bot
+		link(rel='stylesheet', href='/stylesheets/joker.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body.back.pastel-white
+		#content
+			header#head
+				a.plain(href="/")
+					h1 Puzzle Bot | 404
+					h2 Puzzle Not Found!
+			section.text
+				article
+					p
+						| Sorry, but the page you seek does not exist.  Here is a haiku riddle instead.
+			section.section
+				article.card.back.pastel-green
+					header
+						h3.card-header Haiku Riddle
+					div#riddle
+						p.card-problem.haiku
+							| What do you call it
+							br
+							| When a martial arts master
+							br
+							| Has a gum disease?
+						.card-input
+							form#riddleform.local(data-type="riddle")
+								input#riddleanswer(type="hidden",name="answer",value="ninjavitis")
+								input#riddleid(type="hidden",name="id")
+								input#riddletext.card-number.large(type="text",name="solution",placeholder="Solution")
+								input#riddlebutton.card-button(type="submit",value="Check",name="Check")
+						.card-correct
+							| Correct! :)
+						.card-incorrect
+							| Incorrect :(
+			footer
+				a(href="/") Take me home
+				|  | &copy;Copyright 2014, PzlBot.com | Please do unto others as you would have them do unto you.
+				noscript
+					h2 Hello Non-JavaScripter!
+					p
+						| A friendly note: Checking the solution to the puzzles shown above requires javascript.  Since you have javascript disabled, you will not be able to check your answers.
+		script(type="text/javascript",src="/javascripts/jquery.min.js")
+		script(type="text/javascript",src="/javascripts/pzlbot.js")
 
-block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+

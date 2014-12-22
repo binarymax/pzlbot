@@ -1,108 +1,97 @@
-var KeepAware = (function(){
+var pzlbot = (function(){
 
-	var _width,_height,imagedata;
+	var duration = 200;
 
 	//------------------------------------------------------------------
-	//Initializes a canvas/div width and height
-	$.fn.canvas = function(width,height,scale) {
-		var canvas = this;
-		scale = scale || 1;
-		width  = parseInt(width||_width) * scale;
-		height = parseInt(height||_height) * scale;
-		canvas[0].width  = width;
-		canvas[0].height = height;
-		canvas.css("width",width + 'px');
-		canvas.css("height",height + 'px');
-		canvas.data("scale",scale);
-		return canvas;
+
+	var onCorrect = function(type,id,solution) {
+		var div = "#" + type;
+		$(div + " > .card-input").slideUp(duration);
+		$(div + " > .card-incorrect").slideUp(duration);
+		$(div + " > .card-correct").slideDown(duration);
+
 	};
-	
+
 	//------------------------------------------------------------------
-	//Initializes the context of a canvas
-	$.fn.loadimage = function(src) {
-		var canvas = this;
-		var context = canvas[0].getContext('2d');
-		var image = new Image();
-		image.onload = function() {
-			_width = image.width;
-			_height = image.height
-			canvas.canvas(_width,_height);
-			context.drawImage(image, 0, 0);
-			imagedata = context.getImageData(0, 0, _width,_height);
+
+	var onIncorrect = function(type,id,solution) {
+		var div = "#" + type;
+		$(div + " > .card-incorrect").slideDown(duration);
+	};
+
+	//------------------------------------------------------------------
+
+	var onDone = function(type,id,solution) {
+		return function(data) {
+			if(data&&data.d&&data.d.results&&data.d.results.length) {
+				data.d.results[0].correct ? onCorrect(type,id,solution) : onIncorrect(type,id,solution);
+			} else {
+				console.log('error');
+			}
 		}
-		image.src = src;
-		return this;
+	};
+
+	var onFail = function(type,id,solution) {
+		return function(xhr,status) {
+			console.log(status);
+		}
 	};
 
 	//------------------------------------------------------------------
 
-	var display = function(obj) {
-		var str = typeof obj==="object"?JSON.stringify(obj):obj;
-		$("#coords").text(str);
-	}
-
-	//------------------------------------------------------------------
-
-	var onChange = function(c){
-		$("#x1").val(c.x);
-		$("#y1").val(c.y);
-		$("#x2").val(c.x2);
-		$("#y2").val(c.y2);
-		display(c);
-	};
-
-	var onColorStart = function(){
-		$("#imagepreview").parent().hide();
-		$("#canvaspreview").show();
-	};
-
-	var onColorPick = function(){
-		$("#imagepreview").parent().show();
-		$("#canvaspreview").hide();
-	};
-
-	//------------------------------------------------------------------
-
-	var onSubmit = function(e){
+	var onLocalSubmit = function(e){
 		e.preventDefault();
 		e.stopPropagation();
 
-		var imgid = $("#image").val();
-		var body = {};
-		var url = "/calibrations/" + imgid;
+		var form = $(this);
+		var type = form.attr("data-type");
+		var id = $("#"+type+"id").val();
+		var solution = $("#"+type+"text").val();
+		var answer = $("#"+type+"answer").val();
 
-		$("#calibrate > input").each(function(){
-			var itm = $(this);
-			var key = itm.attr("name");
-			var val = itm.val();
-			if (key) body[key] = val;
-		});
-
-		display(body);
-
-		$.ajax(url,{
-			type:"PUT",
-			data:body
-		});
+		console.log(solution,answer,type);
+		(solution.toLowerCase() === answer.toLowerCase()) ? onCorrect(type,id,solution) : onIncorrect(type,id,solution);
 
 		return false;
 	};
 
 	//------------------------------------------------------------------
 
-	var setPreview = function() {
-		var image = $("#imagepreview");
-		image.parent().show();
-		$("#canvaspreview").loadimage(image.attr("src")).hide();
-	}
+	var onRemoteSubmit = function(e){
+		e.preventDefault();
+		e.stopPropagation();
 
-	var init = function(){
-		setPreview();
-		$("#calibrate").on("submit",onSubmit);
-		$("#colorpick").on("click",onColorStart);
-		$('#imagepreview').Jcrop({onChange:onChange});
+		var form = $(this);
+		var type = form.attr("data-type");
+		var id = $("#"+type+"id").val();
+		var solution = $("#"+type+"text").val();
+
+		var url = "/solutions/" + id;
+		var body = {solution:solution};
+		var opts = {
+			type:"POST",
+			data:body,
+			dataType:"json"
+		};
+
+		$("#" + type + " > .card-incorrect").slideUp(duration);
+
+		$.ajax(url,opts)
+			.done(onDone(type,id,solution))
+			.fail(onFail(type,id,solution))
+
+		return false;
 	};
 
-	return {init:init};
+	//------------------------------------------------------------------
+
+	var init = function(){
+		$("form:not(.local)").on("submit",onRemoteSubmit);
+		$("form.local").on("submit",onLocalSubmit);
+	};
+
+	init();
+
+	return "I solve, therefore I am.";
 
 })();

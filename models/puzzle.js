@@ -4,6 +4,11 @@ var	query  = require('../lib/db').query;
 var Model = module.exports = {}; 
 
 // ---------------------------------------------------------------------------------------------------
+var GetPuzzle = Model.GetPuzzle = function(id,callback) {
+	query("SELECT * FROM puzzles WHERE id=?",[id],callback);
+};
+
+// ---------------------------------------------------------------------------------------------------
 var GetPuzzles = Model.GetPuzzles = function(type,callback) {
 	query("SELECT * FROM puzzles WHERE type=? ORDER BY id",[type],callback);
 };

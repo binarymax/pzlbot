@@ -56,7 +56,7 @@ var generate = function() {
 
 	console.log(easy.length);
 
-	date.set('year', 2015);
+	date.set('year', 2014);
 	date.set('month', 0);
 	date.set('date', 1);
 
@@ -81,6 +81,6 @@ var generate = function() {
 
 };
 
-console.log('Generation is complete!!!');
-process.exit();
-//a.load(generate);
+//console.log('Generation is complete!!!');
+//process.exit();
+a.load(generate);
