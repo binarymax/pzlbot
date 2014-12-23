@@ -1,75 +1,54 @@
-doctype html
-html
-	head
-		title Puzzle Bot
-		link(rel='stylesheet', href='/stylesheets/joker.css')
-		link(rel='stylesheet', href='/stylesheets/style.css')
-	body.back.pastel-white
-		header#head
-			h1 Puzzle Bot | Jumble
-			h2= puzzle.date
-		#content
-			section.ad
-				.info Buy some stuff here!				
-			section.text
-				article
-					p
-						| These puzzles challenge your anagram solving power.  Find the word that matches the jumbled letters.
-			section.section
-				article.card.back.pastel-green
-					header
-						h3.card-header Easy
-					div#easy
-						p.card-problem.anagram
-							| #{puzzle.easyproblem}
-						.card-input.anagram
-							form#easyform(data-type="easy")
-								input#easyid(type="hidden",name="id",value=puzzle.easyid)
-								input#easytext.card-word(type="text",name="solution",placeholder="Solution",maxlength=puzzle.easyproblem.length)
-								input#easybutton.card-button(type="submit",value="OK",name="OK")
-						.card-correct
-							| Correct! :)
-						.card-incorrect
-							| Incorrect :(
-				article.card.back.pastel-yellow
-					header
-						h3.card-header Medium
-					div#medium
-						p.card-problem.anagram
-							| #{puzzle.mediumproblem}
-						.card-input.anagram
-							form#mediumform(data-type="medium")
-								input#mediumid(type="hidden",name="id",value=puzzle.mediumid)
-								input#mediumtext.card-word(type="text",name="solution",placeholder="Solution",maxlength=puzzle.mediumproblem.length)
-								input#mediumbutton.card-button(type="submit",value="OK",name="OK")
-						.card-correct
-							| Correct! :)
-						.card-incorrect
-							| Incorrect :(
-				article.card.back.pastel-pink
-					header
-						h3.card-header Hard
-					div#hard
-						p.card-problem.anagram
-							| #{puzzle.hardproblem}
-						.card-input.anagram
-							form#hardform(data-type="hard")
-								input#hardid(type="hidden",name="id",value=puzzle.hardid)
-								input#hardtext.card-word(type="text",name="solution",placeholder="Solution",maxlength=puzzle.hardproblem.length)
-								input#hardbutton.card-button(type="submit",value="OK",name="OK")
-						.card-correct
-							| Correct! :)
-						.card-incorrect
-							| Incorrect :(
-			section.ad
-				.info Buy some stuff here!
-		footer#foot
-			| &copy;Copyright 2014, PzlBot.com | Please do unto others as you would have them do unto you.
-			noscript
-				h2 Hello Non-JavaScripter!
-				p
-					| A friendly note: Checking the solution to the puzzles shown above requires javascript.  Since you have javascript disabled, you will not be able to check your answers.
-		script(type="text/javascript",src="/javascripts/jquery.min.js")
-		script(type="text/javascript",src="/javascripts/pzlbot.js")
+extends ./layout.jade
 
+block title
+	| Puzzle Bot | Jumble
 
+block tagline
+	| These puzzles challenge your anagram solving power.  Find the word that matches the jumbled letters.
+
+block content
+	article.card.back.pastel-green
+		header
+			h3.card-header Easy
+		div#easy
+			p.card-problem.anagram
+				| #{puzzle.easyproblem}
+			.card-input.anagram
+				form#easyform(data-type="easy")
+					input#easyid(type="hidden",name="id",value=puzzle.easyid)
+					input#easytext.card-word(type="text",name="solution",placeholder="Solution",maxlength=puzzle.easyproblem.length)
+					input#easybutton.card-button(type="submit",value="OK",name="OK")
+			.card-correct
+				| Correct! :)
+			.card-incorrect
+				| Incorrect :(
+	article.card.back.pastel-yellow
+		header
+			h3.card-header Medium
+		div#medium
+			p.card-problem.anagram
+				| #{puzzle.mediumproblem}
+			.card-input.anagram
+				form#mediumform(data-type="medium")
+					input#mediumid(type="hidden",name="id",value=puzzle.mediumid)
+					input#mediumtext.card-word(type="text",name="solution",placeholder="Solution",maxlength=puzzle.mediumproblem.length)
+					input#mediumbutton.card-button(type="submit",value="OK",name="OK")
+			.card-correct
+				| Correct! :)
+			.card-incorrect
+				| Incorrect :(
+	article.card.back.pastel-pink
+		header
+			h3.card-header Hard
+		div#hard
+			p.card-problem.anagram
+				| #{puzzle.hardproblem}
+			.card-input.anagram
+				form#hardform(data-type="hard")
+					input#hardid(type="hidden",name="id",value=puzzle.hardid)
+					input#hardtext.card-word(type="text",name="solution",placeholder="Solution",maxlength=puzzle.hardproblem.length)
+					input#hardbutton.card-button(type="submit",value="OK",name="OK")
+			.card-correct
+				| Correct! :)
+			.card-incorrect
+				| Incorrect :(

@@ -1,7 +1,30 @@
 doctype html
 html
 	head
-		title= title
+		title Puzzle Bot
+		link(rel='stylesheet', href='/stylesheets/joker.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
-	body
-		block content
+	body.back.pastel-white
+		header#head
+			h1 
+				block title
+			h2= puzzle.date
+		#content
+			section.ad
+				.info Buy some stuff here!
+			section.text
+				article
+					p
+						block tagline
+			section.section
+				block content
+			section.ad
+				.info Buy some stuff here!
+		footer#foot
+			| &copy;Copyright 2014, PzlBot.com | Please do unto others as you would have them do unto you.
+			noscript
+				h2 Hello Non-JavaScripter!
+				p
+					| A friendly note: Checking the solution to the puzzles shown above requires javascript.  Since you have javascript disabled, you will not be able to check your answers.
+		script(type="text/javascript",src="/javascripts/jquery.min.js")
+		script(type="text/javascript",src="/javascripts/pzlbot.js")

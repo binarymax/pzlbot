@@ -5,6 +5,7 @@ body {
 
 #content {
 	background: url(/images/cream_pixels.png);
+	/*http://subtlepatterns.com/cream-pixels/*/
 }
 
 #head {
@@ -101,10 +102,6 @@ body {
 	color:#a33;
 }
 
-form {
-	white-space: nowrap;
-}
-
 input.card-number {
 	font-size:1.2em;
 	line-height:1.2em;
@@ -129,7 +126,7 @@ input.card-word {
 	font-weight:bold;
 	font-family: Calibri, Verdana, sans-serif; 
 	color:#333;
-	width:10em;
+	width:9.9em;
 	padding-left:8px;
 }
 
