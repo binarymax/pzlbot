@@ -1,0 +1,17 @@
+extends ./dynamic.jade
+
+block title
+	| Puzzle Bot | Dictionary
+
+block tagline
+	| Word Definition for 
+	| #{data.word}
+
+block content
+	article.card.back.pastel-green
+		header
+			h3.card-header
+				| #{data.word}
+		div#easy
+			p.card-problem.definition
+				!= data.text
