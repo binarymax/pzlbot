@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		title Puzzle Bot
+		title #{puzzle.title}&nbsp;|&nbsp;##{puzzle.number}
 		meta(name="description",content="Daily Puzzles for your Mind")
 		meta(name="author",content="Max Irwin")
 		meta(name="canonical",content="http://pzlbot.com")
@@ -23,7 +23,8 @@ html
 			h2= puzzle.date
 		#content
 			section.ad
-				.info Buy some stuff here!
+				.info
+					img(src="/images/star200.png",width="50px",height="50px")
 			section.text
 				article
 					p
@@ -31,9 +32,16 @@ html
 			section.section
 				block content
 			section.ad
-				.info Buy some stuff here!
+				.info
+					img(src="/images/star200.png",width="50px",height="50px")
 		footer#foot
-			| &copy;Copyright 2014, PzlBot.com | Please do unto others as you would have them do unto you.
+			nav
+				a(href="/") Home
+				|&nbsp;|&nbsp;
+				a(href="/j") Anagrams
+				|&nbsp;|&nbsp;
+				a(href="https://twitter.com/pzlbot") Twitter
+			p &copy;Copyright 2014, PzlBot.com | Please do unto others as you would have them do unto you.
 			noscript
 				h2 Hello Non-JavaScripter!
 				p
