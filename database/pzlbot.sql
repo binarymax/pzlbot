@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS puzzles (
 );
 
 INSERT INTO types(id,name) VALUES(1,'chess');
-INSERT INTO types(id,name) VALUES(2,'jumble');
+INSERT INTO types(id,name) VALUES(2,'anagrams');
 INSERT INTO types(id,name) VALUES(3,'arithmetic');
 
 INSERT INTO difficulties(id,name) VALUES(1,'easy');
