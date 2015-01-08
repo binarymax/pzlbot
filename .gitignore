@@ -31,3 +31,4 @@ secrets.js
 public/puzzles
 .DS_Store
 ./public/definitions
+dict/gutenberg
