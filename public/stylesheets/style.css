@@ -65,8 +65,6 @@ body {
 	margin-left:5px;
 	margin-bottom:30px;
 	margin-top:30px;
-	font-size:1.5em;
-	font-weight:bold;
 }
 
 .card-problem.anagram {
@@ -77,6 +75,34 @@ body {
 	padding:10px;
 	border:1px solid #ddd;
 	background-color:#fff;
+	font-size:1.5em;
+	font-weight:bold;
+}
+
+.card-problem.arithmetic {
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color:#333;
+	width:300px;
+	padding:10px;
+	border:1px solid #ddd;
+	background-color:#fff;
+}
+
+.mathcell {
+	border:1px solid #ccc;
+	width:1.9em;
+	padding:0;
+	margin:0;
+	text-align:center;
+}
+
+.mathstep {
+	background-color:#00fe91;
+}
+
+.mathgoal {
+	background-color:#fe9100;
 }
 
 .card-problem.haiku {
