@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var secrets = require('./secrets');
 var routes = require('./lib/routes');
+var bot = require('./lib/bot');
 
 var app = express();
 
@@ -54,5 +55,7 @@ app.use(function(err, req, res, next) {
 	});
 });
 
+//Setup the tweet bot!
+bot.setup();
 
 module.exports = app;
